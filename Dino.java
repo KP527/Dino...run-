@@ -116,8 +116,8 @@ public class Dino {
    
    public void duck(Graphics myBuffer)
    {
-      myBuffer.drawImage(duck.getImage(), (int) (getX() - getRadius()), (int) (getY() - getRadius()),
-				(int) getDiameter(), (int) getDiameter(), null);
+      myBuffer.drawImage(duck.getImage(), (int) ((getX() - getRadius())), (int) ((getY() - getRadius()*0.1)),
+				(int) (getDiameter()), (int) (getDiameter()*0.4), null);
 
    }
 }

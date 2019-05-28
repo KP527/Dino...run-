@@ -26,16 +26,19 @@ public class DinoPanel extends JPanel {
 	public DinoPanel() {
 		myImage = new BufferedImage(FRAME1, FRAME2, BufferedImage.TYPE_INT_RGB);
 		myBuffer = myImage.getGraphics();
-		myBuffer.setColor(BACKGROUND);
-		myBuffer.fillRect(0, 0, FRAME1, FRAME2);
-		myBuffer.setColor(new Color(196, 196, 196));
-		myBuffer.fillRect(200, 100, FRAME1, FRAME2);
+		myBuffer.setColor(BACKGROUND); // cover the
+			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
+			myBuffer.setColor(new Color(196, 196, 196));
+			myBuffer.fillRect(0, 300, FRAME1, FRAME2);
+         
+         a = new Dino();
+         a.draw(myBuffer);
 		// int yPos = (int)(Math.random()*(FRAME2-100)+ 50);
 
 		//listener = new Listener();
 //		key = new Key();
 
-		a = new Dino();
+
 
 		// t = new Timer(5, listener);
 // 		t.start();
