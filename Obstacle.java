@@ -10,6 +10,7 @@ import java.awt.*;
 public abstract class Obstacle
 {
     private int myX, myY, myHeight, myLength, mySpeed;
+    private ImageIcon cacc = new ImageIcon("Cactus-1.png");
    
       /************************************************************* 
    	* Constructs an obstacle with X, Y, height and length set to 0.
@@ -134,6 +135,11 @@ public abstract class Obstacle
     }
 
 
-   public abstract void draw(Graphics myBuffer);
+    public void draw(Graphics myBuffer)
+   {
+      setX(getX() -10);
+      myBuffer.drawImage(cacc.getImage(), myX, myY, myLength, myHeight, null);
+      
+   }
 
 }

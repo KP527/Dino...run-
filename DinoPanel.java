@@ -21,10 +21,16 @@ public class DinoPanel extends JPanel {
 	private Timer t;
 	private Dino a;
    private Cactus c;
-//	private Key key;
+   private DinoScoreboard scoreboard;
+	//private Key key;
 	//private Listener Listener;
 
 	public DinoPanel() {
+   setLayout(new BorderLayout());
+      
+    scoreboard = new DinoScoreboard();
+    add(scoreboard, BorderLayout.NORTH);
+   
 		myImage = new BufferedImage(FRAME1, FRAME2, BufferedImage.TYPE_INT_RGB);
 		myBuffer = myImage.getGraphics();
 		myBuffer.setColor(BACKGROUND); // cover the
@@ -48,7 +54,21 @@ public class DinoPanel extends JPanel {
 
 
 		 t = new Timer(5, new Listener());
- 		t.start();
+       
+       
+
+      addKeyListener(new KeyAdapter(){
+        public void keyPressed(KeyEvent e)
+        {
+         if(e.getKeyCode() == KeyEvent.VK_SPACE)
+            {
+              t.start();
+              scoreboard.ScoreStart();
+            }
+         }
+         
+         });
+
 
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -59,6 +79,7 @@ public class DinoPanel extends JPanel {
 			myBuffer.fillRect(0, 300, FRAME1, FRAME2);
 
 			a.draw(myBuffer);
+         c.draw(myBuffer);
 
 			repaint();
  				}
@@ -99,10 +120,10 @@ public class DinoPanel extends JPanel {
  	private class Listener implements ActionListener {
  		public void actionPerformed(ActionEvent e) 
       {
-      myBuffer.setColor(BACKGROUND);    //cover the 
-      myBuffer.fillRect(0,0,c.getX(),c.getY());   //old ball
-            
-            c.move();
+      // myBuffer.setColor(BACKGROUND);    //cover the 
+//       myBuffer.fillRect(0,0,c.getX(),c.getY());   //old ball
+//             
+//             c.move();
             //collide(ball, pd);
             
             c.draw(myBuffer);     
