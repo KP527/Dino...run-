@@ -94,12 +94,12 @@ public class Dino {
 	}
 
 	// instance methods
-	public void jump(int rightEdge, int bottomEdge, Graphics myBuffer) {
-		//int setyval = 0;
-      setY(getY() + 40);
-      draw(myBuffer);
-
-	}
+	// public void jump(int rightEdge, int bottomEdge, Graphics myBuffer) {
+// 		//int setyval = 0;
+//       setY(getY() + 40);
+//       draw(myBuffer);
+// 
+// 	}
    
    	public void sit(int rightEdge, int bottomEdge, Graphics myBuffer) {
 		//int setyval = 0;
@@ -117,7 +117,13 @@ public class Dino {
    public void duck(Graphics myBuffer)
    {
       myBuffer.drawImage(duck.getImage(), (int) ((getX() - getRadius())), (int) ((getY() - getRadius()*0.1)),
-				(int) (getDiameter()), (int) (getDiameter()*0.4), null);
+				(int) (getDiameter()), (int) (getDiameter()*0.5), null);
 
+   }
+   
+   public void jump(Graphics myBuffer)
+   {
+      myBuffer.drawImage(dino.getImage(), (int) (getX() - getRadius()), (int) (getY() - getRadius()-100),
+				(int) getDiameter(), (int) getDiameter(), null);
    }
 }

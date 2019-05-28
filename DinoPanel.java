@@ -32,8 +32,9 @@ public class DinoPanel extends JPanel {
 			myBuffer.fillRect(0, 300, FRAME1, FRAME2);
 		
 		myBuffer.setColor(new Color(100, 100, 100));
-         myBuffer.setFont(new Font("Ariel", Font.BOLD, 50));
-         myBuffer.drawString("press up to start the game!", 100, 80);
+         myBuffer.setFont(new Font("Monospaced", Font.BOLD, 20));
+         myBuffer.drawString("Up makes the dino stand, Space makes it jump, and Down makes it duck", 100, 80);
+         myBuffer.drawString("Press Up to start the game!", 100, 100);
          
          a = new Dino();
          a.draw(myBuffer);
@@ -49,7 +50,7 @@ public class DinoPanel extends JPanel {
 
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				 if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_SPACE) {
+				 if (e.getKeyCode() == KeyEvent.VK_UP) {
 		   myBuffer.setColor(BACKGROUND); // cover the
 			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
 			myBuffer.setColor(new Color(196, 196, 196));
@@ -70,6 +71,18 @@ public class DinoPanel extends JPanel {
 
 			repaint();
 				}
+         if (e.getKeyCode() == KeyEvent.VK_SPACE) 
+         {
+		   myBuffer.setColor(BACKGROUND); // cover the
+			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
+			myBuffer.setColor(new Color(196, 196, 196));
+			myBuffer.fillRect(0, 300, FRAME1, FRAME2);
+
+			a.jump(myBuffer);
+
+			repaint();
+ 				}
+
 			}
 		});
 		
