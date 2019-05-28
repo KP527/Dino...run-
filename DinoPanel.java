@@ -30,6 +30,10 @@ public class DinoPanel extends JPanel {
 			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
 			myBuffer.setColor(new Color(196, 196, 196));
 			myBuffer.fillRect(0, 300, FRAME1, FRAME2);
+		
+		myBuffer.setColor(new Color(100, 100, 100));
+         myBuffer.setFont(new Font("Ariel", Font.BOLD, 50));
+         myBuffer.drawString("press up to start the game!", 100, 80);
          
          a = new Dino();
          a.draw(myBuffer);
