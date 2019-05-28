@@ -44,6 +44,17 @@ public class Cactus extends Obstacle
       myBuffer.drawImage(cacc.getImage(), myX, myY, myLength, myHeight, null);
       
    }
+   
+   public void move()
+      {
+         setX(myX +  mySpeed); 
+         if(getX() >= 0)  //hit right edge
+        {
+            setX(100); 
+        }               // move horizontally
+        
+      }
+
 
  }
 

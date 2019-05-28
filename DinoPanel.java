@@ -20,8 +20,9 @@ public class DinoPanel extends JPanel {
 	// private Ball ball;
 	private Timer t;
 	private Dino a;
+   private Cactus c;
 //	private Key key;
-	//private Listener listener;
+	//private Listener Listener;
 
 	public DinoPanel() {
 		myImage = new BufferedImage(FRAME1, FRAME2, BufferedImage.TYPE_INT_RGB);
@@ -33,10 +34,11 @@ public class DinoPanel extends JPanel {
 		
 		myBuffer.setColor(new Color(100, 100, 100));
          myBuffer.setFont(new Font("Monospaced", Font.BOLD, 20));
-         myBuffer.drawString("Up makes the dino stand, Space makes it jump, and Down makes it duck", 100, 80);
-         myBuffer.drawString("Press Up to start the game!", 100, 100);
+         myBuffer.drawString("Space makes the dino stand, Up makes it jump, and Down makes it duck", 100, 80);
+         myBuffer.drawString("Press Space to start the game!", 100, 100);
          
          a = new Dino();
+         c = new Cactus(10, 40, 40, 10, 5);
          a.draw(myBuffer);
 		// int yPos = (int)(Math.random()*(FRAME2-100)+ 50);
 
@@ -45,12 +47,12 @@ public class DinoPanel extends JPanel {
 
 
 
-		// t = new Timer(5, listener);
-// 		t.start();
+		 t = new Timer(5, new Listener());
+ 		t.start();
 
 		addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				 if (e.getKeyCode() == KeyEvent.VK_UP) {
+				 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 		   myBuffer.setColor(BACKGROUND); // cover the
 			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
 			myBuffer.setColor(new Color(196, 196, 196));
@@ -71,7 +73,7 @@ public class DinoPanel extends JPanel {
 
 			repaint();
 				}
-         if (e.getKeyCode() == KeyEvent.VK_SPACE) 
+         if (e.getKeyCode() == KeyEvent.VK_UP) 
          {
 		   myBuffer.setColor(BACKGROUND); // cover the
 			myBuffer.fillRect(0, 0, FRAME1, FRAME2); // old ball
@@ -94,11 +96,21 @@ public class DinoPanel extends JPanel {
 		g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
 	}
 
-// 	private class Listener implements ActionListener {
-// 		public void actionPerformed(ActionEvent e) {
-// 		
-// 		}
-// 	}
+ 	private class Listener implements ActionListener {
+ 		public void actionPerformed(ActionEvent e) 
+      {
+      myBuffer.setColor(BACKGROUND);    //cover the 
+      myBuffer.fillRect(0,0,c.getX(),c.getY());   //old ball
+            
+            c.move();
+            //collide(ball, pd);
+            
+            c.draw(myBuffer);     
+            repaint();
+
+ 		
+ 		}
+ 	}
 
 //	private class Key extends KeyAdapter {
 //		public void keyPressed(KeyEvent e) {
